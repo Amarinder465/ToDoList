@@ -1,0 +1,26 @@
+<h2>To-Do List</h2>
+<div class="box">
+
+
+<div>
+  <input type="text" [(ngModel)]="searchItem" (ngModelChange)="search()"  name="newTodo" placeholder="Search From list">
+</div>
+<div class="box2">
+<form (ngSubmit)="addTodo()">
+  <input type="text" [(ngModel)]="newTodo" name="newTodo" placeholder="Add new to-do item">
+  <button type="submit">Add</button>
+</form>
+</div>
+</div>
+<ul>
+  <li *ngFor="let todo of filteredTodos">
+    <label class="container" [ngClass]="{'completed': todo.completed}">
+      <input type="checkbox" [(ngModel)]="todo.completed" name="completed" (click)="toggleCompleted(todo)">
+      <span class="checkmark"></span>
+      {{ todo.title }}
+    </label>
+    <button (click)="deleteTodo(todo)">Delete</button>
+  </li>
+</ul>
+
+
